@@ -9,7 +9,8 @@ namespace Todo.Domain.Handlers
 {
     public class TodoHandler :
         Notifiable,
-        IHandler<CreateTodoCommand>
+        IHandler<CreateTodoCommand>,
+        IHandler<UpdateTodoCommand>
     {
 
         private readonly ITodoRepository _repository;
@@ -29,6 +30,22 @@ namespace Todo.Domain.Handlers
             _repository.Create(todo);
 
             return new GenericCommandResult(true, "TODO created!", todo);
+        }
+
+        public ICommandResult Handle(UpdateTodoCommand command)
+        {
+            command.Validate();
+            if (command.Invalid)
+                return new GenericCommandResult(false, "Error, there's something wrong in your task", command.Notifications);
+
+            var todo = _repository.GetById(command.Id, command.User);
+
+            todo.UpdateTitle(command.Title);
+
+            _repository.Update(todo);
+
+            return new GenericCommandResult(true, "TODO updated!", todo);
+
         }
     }
 }
