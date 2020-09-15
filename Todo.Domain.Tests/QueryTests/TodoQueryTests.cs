@@ -27,5 +27,7 @@ namespace Todo.Domain.Tests.QueryTests
             var result = _items.AsQueryable().Where(TodoQueries.GetAll("user1"));
             Assert.AreEqual(3, result.Count());
         }
+
+        //TODO: Create all tests
     }
 }
