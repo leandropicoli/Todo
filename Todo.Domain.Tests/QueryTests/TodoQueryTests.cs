@@ -15,10 +15,10 @@ namespace Todo.Domain.Tests.QueryTests
         public TodoQueryTests()
         {
             _items = new List<TodoItem>();
-            _items.Add(new TodoItem("Task 1", DateTime.Now, "user1"));
-            _items.Add(new TodoItem("Task 2", DateTime.Now, "user2"));
-            _items.Add(new TodoItem("Task 3", DateTime.Now, "user1"));
-            _items.Add(new TodoItem("Task 4", DateTime.Now, "user1"));
+            _items.Add(new TodoItem("Task 1", "user1", DateTime.Now));
+            _items.Add(new TodoItem("Task 2", "user2", DateTime.Now));
+            _items.Add(new TodoItem("Task 3", "user1", DateTime.Now));
+            _items.Add(new TodoItem("Task 4", "user1", DateTime.Now));
         }
 
         [TestMethod]

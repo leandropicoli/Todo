@@ -28,7 +28,7 @@ namespace Todo.Domain.Handlers
             if (command.Invalid)
                 return new GenericCommandResult(false, "Error creating TODO", command.Notifications);
 
-            var todo = new TodoItem(command.Title, command.Date, command.User);
+            var todo = new TodoItem(command.Title, command.User, command.Date);
             _repository.Create(todo);
 
             return new GenericCommandResult(true, "TODO created!", todo);

@@ -10,7 +10,7 @@ namespace Todo.Domain.Tests.EntityTests
         [TestMethod]
         public void GivenANewTodo_ShouldBeDoneEqualsFalse()
         {
-            var todo = new TodoItem("Some title", DateTime.Now, "leandropicoli");
+            var todo = new TodoItem("Some title", "leandropicoli", DateTime.Now);
 
             Assert.IsFalse(todo.Done);
         }
